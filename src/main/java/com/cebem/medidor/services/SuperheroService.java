@@ -7,7 +7,7 @@ import com.cebem.medidor.models.Superhero;
 
 @Service
 public class SuperheroService {
-    private static final String API_KEY = "TU_API_KEY";
+    private static final String API_KEY = "664d2ab5bcc2886fe0ae1b6f79541255";
     private static final String API_URL = "https://superheroapi.com/api/" + API_KEY + "/";
 
     private final RestTemplate restTemplate = new RestTemplate();
