@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Batalla de Superhéroes</title>
+</head>
+<body>
+    <h1>¡Batalla de Superhéroes!</h1>
+    <div style="display: flex; gap: 40px;">
+        <div>
+            <h2 th:text="${hero1.name}"></h2>
+            <img th:src="${hero1.imageUrl}" width="200"/>
+            <ul>
+                <li>Inteligencia: <span th:text="${hero1.powerstats.intelligence}"></span></li>
+                <li>Fuerza: <span th:text="${hero1.powerstats.strength}"></span></li>
+                <li>Velocidad: <span th:text="${hero1.powerstats.speed}"></span></li>
+                <li>Durabilidad: <span th:text="${hero1.powerstats.durability}"></span></li>
+                <li>Poder: <span th:text="${hero1.powerstats.power}"></span></li>
+                <li>Combate: <span th:text="${hero1.powerstats.combat}"></span></li>
+                <li><strong>Total:</strong> <span th:text="${hero1.totalPower}"></span></li>
+            </ul>
+        </div>
+        <div>
+            <h2 th:text="${hero2.name}"></h2>
+            <img th:src="${hero2.imageUrl}" width="200"/>
+            <ul>
+                <li>Inteligencia: <span th:text="${hero2.powerstats.intelligence}"></span></li>
+                <li>Fuerza: <span th:text="${hero2.powerstats.strength}"></span></li>
+                <li>Velocidad: <span th:text="${hero2.powerstats.speed}"></span></li>
+                <li>Durabilidad: <span th:text="${hero2.powerstats.durability}"></span></li>
+                <li>Poder: <span th:text="${hero2.powerstats.power}"></span></li>
+                <li>Combate: <span th:text="${hero2.powerstats.combat}"></span></li>
+                <li><strong>Total:</strong> <span th:text="${hero2.totalPower}"></span></li>
+            </ul>
+        </div>
+    </div>
+    <h2>¡El ganador es: <span th:text="${winner.name}"></span>!</h2>
+</body>
+</html>
