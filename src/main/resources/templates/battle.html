@@ -9,7 +9,7 @@
     <div style="display: flex; gap: 40px; margin-top: 20px;">
         <div>
             <h2 th:text="${hero1.name}"></h2>
-            <img th:src="${hero1.imageUrl}" width="200"/>
+            <img th:src="${hero1.image.url}" width="200"/>
             <ul>
                 <li>Inteligencia: <span th:text="${hero1.powerstats.intelligence}"></span></li>
                 <li>Fuerza: <span th:text="${hero1.powerstats.strength}"></span></li>
@@ -22,7 +22,7 @@
         </div>
         <div>
             <h2 th:text="${hero2.name}"></h2>
-            <img th:src="${hero2.imageUrl}" width="200"/>
+            <img th:src="${hero2.image.url}" width="200"/>
             <ul>
                 <li>Inteligencia: <span th:text="${hero2.powerstats.intelligence}"></span></li>
                 <li>Fuerza: <span th:text="${hero2.powerstats.strength}"></span></li>
