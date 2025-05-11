@@ -2,14 +2,128 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Batalla de Superhéroes</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: linear-gradient(120deg, #232526 0%, #414345 100%);
+            color: #f9f9f9;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-top: 30px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px #000a;
+        }
+        a {
+            display: block;
+            width: fit-content;
+            margin: 22px auto 0 auto;
+            padding: 12px 28px;
+            background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 32px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            box-shadow: 0 4px 16px #0003;
+            transition: background 0.2s, transform 0.2s;
+        }
+        a:hover {
+            background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+            transform: scale(1.05);
+        }
+        .battle-flex {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin: 40px auto 0 auto;
+            max-width: 900px;
+        }
+        .hero-panel {
+            background: rgba(34, 40, 49, 0.94);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #0006;
+            padding: 28px 24px 20px 24px;
+            width: 320px;
+            text-align: center;
+            transition: transform 0.18s;
+        }
+        .hero-panel:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 40px #0007;
+        }
+        .hero-panel h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            letter-spacing: 1.5px;
+            color: #ffdc5e;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        .hero-panel img {
+            border-radius: 12px;
+            box-shadow: 0 4px 18px #0005;
+            margin-bottom: 18px;
+            background: #222;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .hero-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 1.08rem;
+        }
+        .hero-panel li {
+            margin-bottom: 7px;
+            padding: 4px 0;
+            border-bottom: 1px solid #3335;
+        }
+        .hero-panel li:last-child {
+            border-bottom: none;
+            font-size: 1.13rem;
+            font-weight: bold;
+            color: #ffdc5e;
+        }
+        h2.winner-title {
+            text-align: center;
+            margin-top: 38px;
+            font-size: 2rem;
+            color: #6ef7be;
+            text-shadow: 1px 1px 8px #000a;
+        }
+        h2.winner-title span {
+            color: #ff512f;
+            font-weight: bold;
+            text-shadow: 1px 1px 8px #000a;
+        }
+        @media (max-width: 900px) {
+            .battle-flex {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+            .hero-panel {
+                width: 90vw;
+                max-width: 340px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>¡Batalla de Superhéroes!</h1>
-    <a href="/battle/random" style="font-size:20px;">¡Ver otra batalla aleatoria!</a>
-    <div style="display: flex; gap: 40px; margin-top: 20px;">
-        <div>
+    <a href="/battle/random">¡Ver otra batalla aleatoria!</a>
+    <div class="battle-flex">
+        <div class="hero-panel">
             <h2 th:text="${hero1.name}"></h2>
-            <img th:src="${hero1.image.url}" width="200"/>
+            <img th:src="${hero1.image.url}" width="200" alt="Imagen de héroe 1"
+                 onerror="this.onerror=null;this.src='/images/no-image.png';"/>
             <ul>
                 <li>Inteligencia: <span th:text="${hero1.powerstats.intelligence}"></span></li>
                 <li>Fuerza: <span th:text="${hero1.powerstats.strength}"></span></li>
@@ -20,9 +134,10 @@
                 <li><strong>Total:</strong> <span th:text="${hero1.totalPower}"></span></li>
             </ul>
         </div>
-        <div>
+        <div class="hero-panel">
             <h2 th:text="${hero2.name}"></h2>
-            <img th:src="${hero2.image.url}" width="200"/>
+            <img th:src="${hero2.image.url}" width="200" alt="Imagen de héroe 2"
+                 onerror="this.onerror=null;this.src='/images/no-image.png';"/>
             <ul>
                 <li>Inteligencia: <span th:text="${hero2.powerstats.intelligence}"></span></li>
                 <li>Fuerza: <span th:text="${hero2.powerstats.strength}"></span></li>
@@ -34,6 +149,6 @@
             </ul>
         </div>
     </div>
-    <h2>¡El ganador es: <span th:text="${winner.name}"></span>!</h2>
+    <h2 class="winner-title">¡El ganador es: <span th:text="${winner.name}"></span>!</h2>
 </body>
 </html>

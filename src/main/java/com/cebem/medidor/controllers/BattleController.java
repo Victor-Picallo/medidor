@@ -32,8 +32,10 @@ public class BattleController {
         Superhero hero1 = superheroService.getSuperheroById(String.valueOf(id1));
         Superhero hero2 = superheroService.getSuperheroById(String.valueOf(id2));
 
-        System.out.println("Hero1: " + hero1);
-        System.out.println("Hero2: " + hero2);
+        System.out.println("Hero1 name: " + hero1.getName());
+        System.out.println("Hero1 image URL: " + hero1.getImage().getUrl());
+        System.out.println("Hero2 name: " + hero2.getName());
+        System.out.println("Hero2 image URL: " + hero2.getImage().getUrl());
 
         Superhero winner = superheroService.getWinner(hero1, hero2);
 
