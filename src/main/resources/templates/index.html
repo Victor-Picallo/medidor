@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscador de Películas</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Buscar Película</h1>
+    <form action="/search" method="post">
+        <input type="text" name="title" placeholder="Título de la película" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div th:if="${movie != null}">
+        <!-- Si la búsqueda fue fallida, muestra el error -->
+        <div th:if="${movie.Response == 'False'}">
+            <p style="color: red;" th:text="${movie.Error}"></p>
+        </div>
+        <!-- Si la búsqueda fue exitosa, muestra los datos -->
+        <div th:if="${movie.Response != 'False'}">
+            <h2 th:text="${movie.Title}"></h2>
+            <div th:if="${movie.Poster != null and movie.Poster != 'N/A'}">
+                <img th:src="${movie.Poster}" alt="Poster" style="max-width:200px"/>
+            </div>
+            <p><b>Año:</b> <span th:text="${movie.Year}"></span></p>
+            <p><b>Género:</b> <span th:text="${movie.Genre}"></span></p>
+            <p><b>Director:</b> <span th:text="${movie.Director}"></span></p>
+            <p><b>Sinopsis:</b> <span th:text="${movie.Plot}"></span></p>
+        </div>
+    </div>
+</body>
+</html>
